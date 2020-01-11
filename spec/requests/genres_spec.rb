@@ -4,7 +4,7 @@ describe "Genres requests", type: :request do
   let!(:genres) { create_list(:genre, 5, :with_movies) }
 
   before :each do
-  	allow_any_instance_of(MovieDetails).to receive(:call).and_return({ :plot=>"A nice plot", :rating=>"9.0", :image_url=>"/sample.jpg" })
+    allow_any_instance_of(MovieDetails).to receive(:call).and_return({ :plot=>"A nice plot", :rating=>"9.0", :image_url=>"/sample.jpg" })
   end
 
   describe "genre list" do

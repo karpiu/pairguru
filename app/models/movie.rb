@@ -15,6 +15,8 @@
 class Movie < ApplicationRecord
   belongs_to :genre
 
+  validates_with TitleBracketsValidator
+
   def self.all_with_genre
     genre_counts = {}
     Genre.joins(:movies).select('count(movies.id) as count, genres.id AS id, genres.name AS name').group('id').map do |g|

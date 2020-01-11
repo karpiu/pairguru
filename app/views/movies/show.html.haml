@@ -6,3 +6,13 @@
   %img.img-rounded{ src: @movie.cover, style: 'width: 100px; height: 150px;' }
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+.comments
+  - @comments.each do |comment|
+    .comment
+      %p= comment.body
+      - if user_signed_in? && current_user.id == comment.user_id
+        = link_to 'Destroy',  movie_comment_path(@movie, comment),  method: :delete, data: { confirm: 'Are you sure?' }
+  - if user_signed_in?
+    = form_for [@movie, @movie.comments.build] do |f|
+      = f.text_field :body
+      = f.button :submit

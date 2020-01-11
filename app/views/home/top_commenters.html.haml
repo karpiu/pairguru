@@ -2,4 +2,5 @@
   .col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2
     %h1.text-center Top commenters!
     - @commenters.each_with_index do |user, i|
-      %p= "#{i+1}: #{user.email} (count: #{user.count})"
+      .commentator
+        %p= "#{i+1}: #{user.email} (count: #{user.count})"
